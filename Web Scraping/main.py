@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # URL of the web page you want to analyze
-url = "https://www.speedwayautodetail.com/"
+url = "https://diamonddetailscv.com/detailing-services/"
 
 # Make an HTTP request to get the content of the page
 response = requests.get(url)
@@ -14,7 +14,16 @@ if response.status_code == 200:
 
     # Find the elements that contain the desired information
     # In this case, titles inside (<h2>, <p>, <h3> ...) tags
-    titles = soup.find_all('p')
+    titles = soup.find_all('li')
+
+    # Ruta del archivo donde guardarás el texto
+    file_path = "titles.txt"
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        for i, title in enumerate(titles, start=1):
+            file.write(f"{i}, {title.get_text()}\n")
+
+    print(f"Los titulos se han guardardo en {file_path}")
 
     # Print the titles
     for i, title in enumerate(titles, start=1):
