@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # URL of the web page you want to analyze
-url = "https://diamonddetailscv.com/detailing-services/"
+url = "https://www.mlb.com/brewers/stats/"
 
 # Make an HTTP request to get the content of the page
 response = requests.get(url)
@@ -14,7 +14,7 @@ if response.status_code == 200:
 
     # Find the elements that contain the desired information
     # In this case, titles inside (<h2>, <p>, <h3> ...) tags
-    titles = soup.find_all('li')
+    titles = soup.find_all('td')
 
     # Ruta del archivo donde guardarás el texto
     file_path = "titles.txt"
